@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //middlewares
-app.use(cors());
+app.use(cors('*'));
 app.use(express.json());
 
 //Connect to databse

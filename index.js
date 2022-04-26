@@ -46,7 +46,12 @@ app.use('/api/v1/messages', messageRoutes);
 const server = app.listen(process.env.PORT, () =>
 	console.log(`Server started on ${PORT}`)
 );
-const io = socket(server);
+const io = socket(server, {
+	cors: {
+		origin: 'https://secret-eyrie-69903.herokuapp.com',
+		credentials: true,
+	},
+});
 
 global.onlineUsers = new Map();
 io.on('connection', (socket) => {

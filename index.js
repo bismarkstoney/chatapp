@@ -20,9 +20,9 @@ const PORT = process.env.PORT || 5000;
 // 	resave: false,
 // 	saveUninitialized: false,
 // };
-if (app.get('env') === 'production') {
-	session.cookie.secure = true; // Serve secure cookies, requires HTTPS
-}
+// if (app.get('env') === 'production') {
+// 	session.cookie.secure = true; // Serve secure cookies, requires HTTPS
+// }
 if (process.env.NODE_ENV === 'production') {
 	// Set static folder
 	app.use(express.static('frontend/build'));
@@ -31,10 +31,6 @@ if (process.env.NODE_ENV === 'production') {
 		res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 	});
 }
-// app.use(expressSession(session));
-// passport.use(strategy);
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 //middlewares
 app.use(cors());

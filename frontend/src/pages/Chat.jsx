@@ -14,7 +14,18 @@ export default function Chat() {
 	const [contacts, setContacts] = useState([]);
 	const [currentChat, setCurrentChat] = useState(undefined);
 	const [currentUser, setCurrentUser] = useState(undefined);
-	const currentUsers = async () => {
+	// const currentUsers = async () => {
+	// 	if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+	// 		navigate('/login');
+	// 	} else {
+	// 		setCurrentUser(
+	// 			await JSON.parse(
+	// 				localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+	// 			)
+	// 		);
+	// 	}
+	// };
+	useEffect(async () => {
 		if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
 			navigate('/login');
 		} else {
@@ -24,10 +35,6 @@ export default function Chat() {
 				)
 			);
 		}
-	};
-	useEffect(() => {
-		currentUsers();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	useEffect(() => {
 		if (currentUser) {

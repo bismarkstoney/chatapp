@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const path =require('path')
 const cors = require('cors');
 const passport = require('passport');
 const expressSession = require('express-session');
@@ -22,6 +23,14 @@ const session = {
 if (app.get('env') === 'production') {
 	session.cookie.secure = true; // Serve secure cookies, requires HTTPS
 }
+if (process.env.NODE_ENV === 'production') {
+	// Set static folder
+	app.use(express.static('frontend/build'));
+  
+	app.get('*', (req, res) => {
+	  res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+	});
+  }
 app.use(expressSession(session));
 passport.use(strategy);
 app.use(passport.initialize());

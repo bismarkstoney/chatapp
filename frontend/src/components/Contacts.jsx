@@ -28,7 +28,7 @@ export default function Contacts({ contacts, changeChat }) {
 						<h3>Friend Zone</h3>
 					</div>
 					<div className='contacts'>
-						{contacts.length > 0
+						{contacts
 							? contacts.map((contact, index) => {
 									return (
 										<div
